@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Whereeeee</string>
     <string name="title_activity_location">Map</string>
+    <string name="title_activity_my_current_location">Map</string>
 
+    <!-- Buttons -->
     <string name="sendLocationBtn">Send Location</string>
     <string name="getLocationBtn">Get Location</string>
 </resources>
