@@ -8,6 +8,7 @@
          location permissions for the 'MyLocation' functionality. 
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
@@ -36,23 +37,23 @@
              You need a different API key for each encryption key, including the release key that is used to
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/. 
-        -->®
+        -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+        <!-- LocationActivity -->
+        <activity
+            android:name=".LocationActivity"
+            android:label="@string/title_activity_location">
+        </activity>
 
+        <!-- MyCurrentLocationActivity -->
         <activity
             android:name=".MyCurrentLocationActivity"
             android:label="@string/title_activity_my_current_location"
             android:exported="true">
-
         </activity>
-
-
-
-
-
 
     </application>
 
