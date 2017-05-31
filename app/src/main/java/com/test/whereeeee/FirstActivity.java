@@ -21,8 +21,7 @@ public class FirstActivity extends AppCompatActivity {
         fSendLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToHintActivity = new Intent(getApplication(), LocationActivity.class);
-                startActivity(goToHintActivity);
+                goToMap();
             }
         });
 
@@ -31,10 +30,16 @@ public class FirstActivity extends AppCompatActivity {
         fGetLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent goToMap = new Intent(getApplication(), LocationActivity.class);
-                startActivity(goToMap);
+                goToMap();
             }
         });
 
     }
+
+    // go to MyCurrentLocationActivity
+    private void goToMap() {
+        Intent goToMap = new Intent(getApplication(), MyCurrentLocationActivity.class);
+        startActivity(goToMap);
+    }
+
 }
