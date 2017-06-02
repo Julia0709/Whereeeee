@@ -5,4 +5,7 @@
     <!-- Buttons -->
     <string name="sendLocationBtn">Send Location</string>
     <string name="getLocationBtn">Get Location</string>
+    <string name="getKeyBtn">Get our key</string>
+    <string name="shareKeyBtn">Share the key</string>
+    <string name="goToNav">Go!!</string>
 </resources>

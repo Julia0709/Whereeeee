@@ -21,7 +21,7 @@ public class FirstActivity extends AppCompatActivity {
         fSendLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToMap();
+                goToGetKey();
             }
         });
 
@@ -30,16 +30,21 @@ public class FirstActivity extends AppCompatActivity {
         fGetLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                goToMap();
+                goToSetKey();
             }
         });
 
     }
 
-    // go to MyCurrentLocationActivity
-    private void goToMap() {
-        Intent goToMap = new Intent(getApplication(), MyCurrentLocationActivity.class);
+    // go to getKey
+    private void goToGetKey() {
+        Intent goToMap = new Intent(getApplication(), GetKeyActivity.class);
         startActivity(goToMap);
+    }
+
+    private void goToSetKey() {
+        Intent goToSetKey = new Intent(getApplication(), SetKeyActivity.class);
+        startActivity(goToSetKey);
     }
 
 }
