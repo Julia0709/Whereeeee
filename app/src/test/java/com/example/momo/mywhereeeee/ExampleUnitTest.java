@@ -1,4 +1,4 @@
-package com.test.whereeeee;
+package com.example.momo.mywhereeeee;
 
 import org.junit.Test;
 

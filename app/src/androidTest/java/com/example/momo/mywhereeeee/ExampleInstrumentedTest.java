@@ -1,4 +1,4 @@
-package com.test.whereeeee;
+package com.example.momo.mywhereeeee;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.test.whereeeee", appContext.getPackageName());
+        assertEquals("com.example.momo.mywhereeeee", appContext.getPackageName());
     }
 }

@@ -1,11 +1,4 @@
 <resources>
-    <string name="app_name">Whereeeee</string>
-    <string name="title_activity_my_current_location">Map</string>
-
-    <!-- Buttons -->
-    <string name="sendLocationBtn">Send Location</string>
-    <string name="getLocationBtn">Get Location</string>
-    <string name="getKeyBtn">Get our key</string>
-    <string name="shareKeyBtn">Share the key</string>
-    <string name="goToNav">Go!!</string>
+    <string name="app_name">MyWhereeeee</string>
+    <string name="title_activity_maps">Map</string>
 </resources>
