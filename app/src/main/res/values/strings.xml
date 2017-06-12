@@ -4,12 +4,6 @@
     <string name="action_settings">Settings</string>
 
     <!-- Buttons -->
-    <string name="sendLocationBtn">Send Location</string>
-    <string name="getLocationBtn">Get Location</string>
-    <string name="getKeyBtn">Get our key</string>
-    <string name="shareKeyBtn">Share the key</string>
-    <string name="goToNav">Go!!</string>
-
     <string name="start_btn">Start!</string>
     <string name="go_to_navi">Go!!</string>
 
