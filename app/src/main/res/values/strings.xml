@@ -21,4 +21,8 @@
     <string name="add_item">Add New Item</string>
     <string name="action_logout">Logout</string>
 
+    <string name="title_activity_maps">Map</string>
+    <string name="compass_dial">Compass Dial</string>
+    <string name="compass_hands">Compass Hands</string>
+
 </resources>
