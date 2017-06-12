@@ -24,13 +24,8 @@
 
         <Button
             android:id="@+id/start_btn"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.5"
-            android:paddingBottom="24dp"
-            android:paddingLeft="12dp"
-            android:paddingRight="12dp"
-            android:paddingTop="24dp"
             android:text="@string/start_btn" />
 
     </LinearLayout>
