@@ -46,7 +46,6 @@
         <activity android:name=".LogInActivity" />
         <activity android:name=".SignUpActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".Chat" />
         <activity android:name=".Users" />
 
         <activity
