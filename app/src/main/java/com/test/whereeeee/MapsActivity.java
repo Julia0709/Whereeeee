@@ -96,12 +96,12 @@ public class MapsActivity extends AppCompatActivity implements GoogleApiClient.C
             return;
         }
         mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-        mEndLocation.setLatitude(UserDetails.latitude);
-        mEndLocation.setLongitude(UserDetails.longitude);
+        mEndLocation.setLatitude(UserDetails.latitude2);
+        mEndLocation.setLongitude(UserDetails.longitude2);
         if (mLastLocation != null) {
             start = mLastLocation.getLatitude() +", "+ mLastLocation.getLongitude();
             destination = mEndLocation.getLatitude() +", "+ mEndLocation.getLongitude();
-            double distance = calculateDistance(mLastLocation.getLatitude(), UserDetails.latitude , mLastLocation.getLongitude(), UserDetails.longitude, mLastLocation.getAltitude(), 0);
+            double distance = calculateDistance(mLastLocation.getLatitude(), UserDetails.latitude2 , mLastLocation.getLongitude(), UserDetails.longitude2, mLastLocation.getAltitude(), 0);
             Toast.makeText(this, "Distance: "+distance, Toast.LENGTH_LONG).show();
 
             Toast.makeText(this, "degree " + mLastLocation.bearingTo(mEndLocation), Toast.LENGTH_LONG).show();

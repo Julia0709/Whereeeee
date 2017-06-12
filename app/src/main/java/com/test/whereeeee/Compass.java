@@ -11,80 +11,6 @@ import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
 
 public class Compass implements SensorEventListener {
-//	private static final String TAG = "Compass";
-//    private Location location;
-//    private Location target;
-//	private SensorManager sensorManager;
-//    private float currentDegree = 0f;
-//
-//	// compass arrow to rotate
-//	public ImageView arrowView = null;
-//
-//	public Compass(Context context) {
-//		sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
-//        location = MapsActivity.mLastLocation;
-//        target = MapsActivity.mEndLocation;
-//	}
-//
-//	public void start() {
-//		sensorManager.registerListener(this, sensorManager.getDefaultSensor(Sensor.TYPE_ORIENTATION),
-//                SensorManager.SENSOR_DELAY_GAME);
-//	}
-//
-//	public void stop() {
-//        sensorManager.unregisterListener(this);
-//	}
-//
-//	@Override
-//	public void onSensorChanged(SensorEvent event) {
-//        GeomagneticField geoField = new GeomagneticField(
-//                (float) target.getLatitude(),
-//                (float) target.getLongitude(),
-//                (float) target.getAltitude(),
-//                System.currentTimeMillis());
-//
-//        // get the angle around the z-axis rotated
-//        float degree = Math.round(event.values[0]);
-//        degree += geoField.getDeclination();
-//
-//        if(location != null && target != null){
-//            float bearing = location.bearingTo(target);
-//            degree = (bearing - degree) * -1;
-//            degree = normalizeDegree(degree);
-//        }
-//
-//        // create a rotation animation (reverse turn degree degrees)
-//        RotateAnimation ra = new RotateAnimation(
-//                currentDegree,
-//                -degree,
-//                Animation.RELATIVE_TO_SELF, 0.5f,
-//                Animation.RELATIVE_TO_SELF, 0.5f);
-//
-//        // how long the animation will take place
-//        ra.setDuration(210);
-//
-//        // set the animation after the end of the reservation status
-//        ra.setFillAfter(true);
-//
-//        // Start the animation
-//        arrowView.startAnimation(ra);
-//        currentDegree = -degree;
-//
-//	}
-//
-//    private float normalizeDegree(float value) {
-//        if (value >= 0.0f && value <= 180.0f) {
-//            return value;
-//        } else {
-//            return 180 + (180 + value);
-//        }
-//    }
-//
-//	@Override
-//	public void onAccuracyChanged(Sensor sensor, int accuracy) {
-//	}
-	//*************************************************************************
-
     private static final String TAG = "Compass";
 
     private SensorManager sensorManager;
@@ -92,8 +18,8 @@ public class Compass implements SensorEventListener {
     private Sensor msensor;
     private float[] mGravity = new float[3];
     private float[] mGeomagnetic = new float[3];
-    private float azimuth = UserDetails.latitude;
-    private float currectAzimuth = 0;
+    private float azimuth = 0f;
+    private float currectAzimuth = 0f;
 
     // compass arrow to rotate
     public ImageView arrowView = null;
@@ -136,18 +62,6 @@ public class Compass implements SensorEventListener {
     @Override
     public void onSensorChanged(SensorEvent event) {
         final float alpha = 0.97f;
-
-
-//        GeomagneticField geoField = new GeomagneticField(
-//                (float) target.getLatitude(),
-//                (float) target.getLongitude(),
-//                (float) target.getAltitude(),
-//                System.currentTimeMillis());
-//
-//        // get the angle around the z-axis rotated
-//        float degree = Math.round(event.values[0]);
-//        degree += geoField.getDeclination();
-
         synchronized (this) {
             if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
 
@@ -174,9 +88,12 @@ public class Compass implements SensorEventListener {
                 float orientation[] = new float[3];
                 SensorManager.getOrientation(R, orientation);
                 // Log.d(TAG, "azimuth (rad): " + azimuth);
-                azimuth = (float) Math.toDegrees(orientation[0]); // orientation
-                azimuth = (azimuth + 360) % 360;
+                //azimuth = (float) Math.toDegrees(orientation[0]); // orientation
+                //azimuth = (azimuth + 360) % 360;
                 // Log.d(TAG, "azimuth (deg): " + azimuth);
+
+
+                azimuth = getDirection(UserDetails.latitude1,UserDetails.longitude1,UserDetails.latitude2,UserDetails.longitude2);
                 adjustArrow();
             }
         }
@@ -184,5 +101,18 @@ public class Compass implements SensorEventListener {
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
+    }
+
+    public static int getDirection(double latitude1, double longitude1, double latitude2, double longitude2) {
+        double lat1 = Math.toRadians(latitude1);
+        double lat2 = Math.toRadians(latitude2);
+        double lng1 = Math.toRadians(longitude1);
+        double lng2 = Math.toRadians(longitude2);
+        double Y = Math.sin(lng2 - lng1) * Math.cos(lat2);
+        double X = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(lng2 - lng1);
+        double deg = Math.toDegrees(Math.atan2(Y, X));
+        double angle = (deg + 360) % 360;
+        return (int) (Math.abs(angle) + (1 / 7200));
+        // getDirection(UserDetails.latitude1,UserDetails.longitude1,UserDetails.latitude2,UserDetails.longitude2);
     }
 }
