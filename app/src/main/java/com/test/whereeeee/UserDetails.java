@@ -5,8 +5,8 @@ public class UserDetails {
     static String password = "";
     static String chatWith = "";
 
-//    static String latitude = "";
-//    static String longitude = "";
+    public String latitude = "";
+    public String longitude = "";
 
 //    static float latitude1 = 49.2860f; // water front station
 //    static float longitude1 = -123.1117f; // water front station
@@ -19,5 +19,16 @@ public class UserDetails {
 
     static float latitude1 = 49.2798f; // vancouver library
     static float longitude1 = -123.16f; // vancouver library
+
+    public UserDetails() {
+    }
+
+    public UserDetails(String username, String password, String latitude, String longitude) {
+        this.username = username;
+        this.password = password;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
 
 }

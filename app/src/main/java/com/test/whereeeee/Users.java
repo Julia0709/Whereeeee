@@ -2,8 +2,8 @@ package com.test.whereeeee;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -64,8 +65,25 @@ public class Users extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 UserDetails.chatWith = al.get(position);
                 startActivity(new Intent(Users.this, CompassActivity.class));
+
+                getUserLocation();
+
             }
         });
+
+    }
+
+    // store current location on firebase
+    public void getUserLocation() {
+
+        UserDetails user1 = new UserDetails("yuria", "yuria", "49.2798", "-123.16");
+        FirebaseDatabase.getInstance()
+                .getReference().child("users").child("yuria").child("location").setValue(user1);
+
+        UserDetails user2 = new UserDetails("momo", "momo", "49.286", "-123.1117");
+        FirebaseDatabase.getInstance()
+                .getReference().child("users").child("momo").child("location").setValue(user2);
+
     }
 
     public void doOnSuccess(String s) {
