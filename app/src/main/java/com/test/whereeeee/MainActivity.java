@@ -31,8 +31,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chat);
 
         layout = (LinearLayout) findViewById(R.id.layout1);
-        sendButton = (ImageView) findViewById(R.id.sendButton);
-        messageArea = (EditText) findViewById(R.id.messageArea);
         scrollView = (ScrollView) findViewById(R.id.scrollView);
 
         Firebase.setAndroidContext(this);
