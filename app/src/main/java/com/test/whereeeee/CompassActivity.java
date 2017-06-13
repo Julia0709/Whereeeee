@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public class CompassActivity extends AppCompatActivity {
@@ -56,6 +57,8 @@ public class CompassActivity extends AppCompatActivity {
 
         compass = new Compass(this);
         compass.arrowView = (ImageView) findViewById(R.id.main_image_hands);
+        compass.textViewDistance = (TextView) findViewById(R.id.distance);
+        compass.textViewAzimuth = (TextView) findViewById(R.id.azimuth);
     }
 
     @Override

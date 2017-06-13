@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class Compass implements SensorEventListener {
     private static final String TAG = "Compass";
@@ -23,6 +24,8 @@ public class Compass implements SensorEventListener {
 
     // compass arrow to rotate
     public ImageView arrowView = null;
+    public TextView textViewDistance = null;
+    public TextView textViewAzimuth = null;
 
     public Compass(Context context) {
         sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
@@ -87,32 +90,20 @@ public class Compass implements SensorEventListener {
             if (success) {
                 float orientation[] = new float[3];
                 SensorManager.getOrientation(R, orientation);
-                // Log.d(TAG, "azimuth (rad): " + azimuth);
-                //azimuth = (float) Math.toDegrees(orientation[0]); // orientation
-                //azimuth = (azimuth + 360) % 360;
-                // Log.d(TAG, "azimuth (deg): " + azimuth);
 
+                azimuth = (float) Math.toDegrees(orientation[0]); // orientation
+                azimuth = (azimuth + 360) % 360;
 
-                azimuth = getDirection(UserDetails.latitude1,UserDetails.longitude1,UserDetails.latitude2,UserDetails.longitude2);
                 adjustArrow();
+                String strAzimuth = String.valueOf(MapsActivity.getDirection(UserDetails.latitude1, UserDetails.longitude1, UserDetails.latitude2, UserDetails.longitude2));
+                String strDistance = String.format("about %1$.0f m",MapsActivity.calculateDistance(UserDetails.latitude1,  UserDetails.longitude1, UserDetails.latitude2, UserDetails.longitude2,0,0));
+                textViewAzimuth.setText(strAzimuth);
+                textViewDistance.setText(strDistance);
             }
         }
     }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
-    }
-
-    public static int getDirection(double latitude1, double longitude1, double latitude2, double longitude2) {
-        double lat1 = Math.toRadians(latitude1);
-        double lat2 = Math.toRadians(latitude2);
-        double lng1 = Math.toRadians(longitude1);
-        double lng2 = Math.toRadians(longitude2);
-        double Y = Math.sin(lng2 - lng1) * Math.cos(lat2);
-        double X = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(lng2 - lng1);
-        double deg = Math.toDegrees(Math.atan2(Y, X));
-        double angle = (deg + 360) % 360;
-        return (int) (Math.abs(angle) + (1 / 7200));
-        // getDirection(UserDetails.latitude1,UserDetails.longitude1,UserDetails.latitude2,UserDetails.longitude2);
     }
 }
