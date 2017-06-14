@@ -1,6 +1,7 @@
 package com.test.whereeeee;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +21,8 @@ import com.firebase.client.Firebase;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class SignUpActivity extends AppCompatActivity {
     EditText username, password;
@@ -110,4 +113,11 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
     }
+
+    // change font
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.test.whereeeee;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -17,6 +18,8 @@ import com.firebase.client.FirebaseError;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MainActivity extends AppCompatActivity {
     LinearLayout layout;
@@ -104,5 +107,11 @@ public class MainActivity extends AppCompatActivity {
 
         layout.addView(textView);
         scrollView.fullScroll(View.FOCUS_DOWN);
+    }
+
+    // change font
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }

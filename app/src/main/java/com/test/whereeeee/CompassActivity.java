@@ -1,10 +1,13 @@
 package com.test.whereeeee;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 
 public class CompassActivity extends AppCompatActivity {
@@ -86,4 +89,11 @@ public class CompassActivity extends AppCompatActivity {
         Log.d(TAG, "stop compass");
         compass.stop();
     }
+
+    // change font
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
 }
