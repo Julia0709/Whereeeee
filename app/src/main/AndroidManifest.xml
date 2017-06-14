@@ -14,7 +14,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-library android:name="com.google.android.maps" />
 
-    <!-- Firebase -->
+    <!-- Permission to allow communication (Firebase, Google font...) -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <uses-feature
