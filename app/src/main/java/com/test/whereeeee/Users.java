@@ -102,7 +102,6 @@ public class Users extends AppCompatActivity {
                 if (!key.equals(UserDetails.username)) {
                     al.add(key);
                 }
-
                 totalUsers++;
             }
 
