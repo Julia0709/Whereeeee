@@ -22,21 +22,26 @@
         tools:context="com.androidchatapp.Register">
 
         <TextView
+            fontPath="@string/font_regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
             android:gravity="center"
             android:text="Register"
-            android:textSize="30dp" />
+            android:textColor="@color/colorPrimaryText"
+            android:textSize="30dp"
+            tools:ignore="MissingPrefix" />
 
         <EditText
             android:id="@+id/username"
+            fontPath="@string/font_regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:hint="enter username"
             android:inputType="text"
-            android:maxLines="1" />
+            android:maxLines="1"
+            tools:ignore="MissingPrefix" />
 
         <EditText
             android:id="@+id/password"
@@ -49,18 +54,43 @@
 
         <Button
             android:id="@+id/registerButton"
+            fontPath="@string/font_regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:text="Register" />
+            android:background="@drawable/button_default"
+            android:text="Login"
+            android:textColor="@color/colorWhite"
+            tools:ignore="MissingPrefix" />
 
-        <TextView
-            android:id="@+id/login"
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Click here to login"
-            android:textSize="20dp" />
+            android:orientation="horizontal">
+
+            <TextView
+                fontPath="@string/font_regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Click here to "
+                android:textSize="16dp"
+                tools:ignore="MissingPrefix" />
+
+            <TextView
+                android:id="@+id/login"
+                fontPath="@string/font_regular"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="login"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16dp"
+                tools:ignore="MissingPrefix" />
+
+        </LinearLayout>
 
     </LinearLayout>
 

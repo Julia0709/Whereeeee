@@ -1,6 +1,7 @@
 package com.test.whereeeee;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -13,9 +14,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MapsActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener, LocationListener {
 
@@ -70,9 +74,8 @@ public class MapsActivity extends AppCompatActivity implements GoogleApiClient.C
 
         if (mLastLocation != null) {
             double distance = calculateDistance(mLastLocation.getLatitude(), mLastLocation.getLongitude(), UserDetails.latitude2, UserDetails.longitude2, mLastLocation.getAltitude(), 0);
-            strDistance = String.format("about %1$.0f m", distance);
+            strDistance = String.format("%1$.0f m", distance);
             textViewDistance.setText(strDistance);
-            //Toast.makeText(this, strDistance, Toast.LENGTH_LONG).show();
         } else {
             Log.d("tag", "Not connected");
         }
@@ -115,19 +118,18 @@ public class MapsActivity extends AppCompatActivity implements GoogleApiClient.C
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
         // TODO Auto-generated method stub
-        switch( status )
-        {
+        switch (status) {
             case LocationProvider.AVAILABLE:
-                Log.v( "Status", "AVAILABLE" );
+                Log.v("Status", "AVAILABLE");
                 break;
             case LocationProvider.OUT_OF_SERVICE:
-                Log.v( "Status", "OUT_OF_SERVICE" );
+                Log.v("Status", "OUT_OF_SERVICE");
                 break;
             case LocationProvider.TEMPORARILY_UNAVAILABLE:
-                Log.v( "Status", "TEMPORARILY_UNAVAILABLE" );
+                Log.v("Status", "TEMPORARILY_UNAVAILABLE");
                 break;
         }
-        Log.v( "Status", "onStatusChanged" );
+        Log.v("Status", "onStatusChanged");
     }
 
     @Override
@@ -148,6 +150,12 @@ public class MapsActivity extends AppCompatActivity implements GoogleApiClient.C
     @Override
     public void onProviderDisabled(String provider) {
 
+    }
+
+    // change font
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 
     @Override

@@ -25,4 +25,7 @@
     <string name="compass_dial">Compass Dial</string>
     <string name="compass_hands">Compass Hands</string>
 
+    <!-- font -->
+    <string name="font_regular">fonts/Comfortaa-Regular.ttf</string>
+
 </resources>

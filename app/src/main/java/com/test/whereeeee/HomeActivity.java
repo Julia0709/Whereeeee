@@ -1,10 +1,13 @@
 package com.test.whereeeee;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -29,4 +32,11 @@ public class HomeActivity extends AppCompatActivity {
         Intent goToLogIn = new Intent(getApplication(), LogInActivity.class);
         startActivity(goToLogIn);
     }
+
+    // change font
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
 }

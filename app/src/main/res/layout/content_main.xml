@@ -27,14 +27,18 @@
 
         <EditText
             android:id="@+id/todoText"
+            fontPath="@string/font_regular"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            tools:ignore="MissingPrefix" />
 
         <Button
             android:id="@+id/addButton"
+            fontPath="@string/font_regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/add_item" />
+            android:text="@string/add_item"
+            tools:ignore="MissingPrefix" />
     </LinearLayout>
 
 </LinearLayout>
