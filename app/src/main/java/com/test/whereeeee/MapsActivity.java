@@ -16,7 +16,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -154,9 +153,9 @@ public class MapsActivity extends AppCompatActivity implements GoogleApiClient.C
             start = mLastLocation.getLatitude() + ", " + mLastLocation.getLongitude();
             destination = mEndLocation.getLatitude() + ", " + mEndLocation.getLongitude();
             double distance = calculateDistance(mLastLocation.getLatitude(), mLastLocation.getLongitude(), UserDetails.latitude2, UserDetails.longitude2, mLastLocation.getAltitude(), 0);
-            strDistance = String.format("about %1$.0f m", distance);
+            strDistance = String.format("%1$.0f m", distance);
             textViewDistance.setText(strDistance);
-            Toast.makeText(this, strDistance, Toast.LENGTH_LONG).show();
+//            Toast.makeText(this, strDistance, Toast.LENGTH_LONG).show();
 
             //findFromTo();
         } else {

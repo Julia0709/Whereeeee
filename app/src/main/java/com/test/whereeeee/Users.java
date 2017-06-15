@@ -1,6 +1,7 @@
 package com.test.whereeeee;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +24,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class Users extends AppCompatActivity {
     ListView usersList;
@@ -117,5 +120,11 @@ public class Users extends AppCompatActivity {
         }
 
         pd.dismiss();
+    }
+
+    // change font
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
     }
 }
