@@ -64,7 +64,7 @@ public class Users extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 UserDetails.chatWith = al.get(position);
-                startActivity(new Intent(Users.this, CompassActivity.class));
+                startActivity(new Intent(Users.this, MapsActivity.class));
 
                 getUserLocation();
 
@@ -99,7 +99,6 @@ public class Users extends AppCompatActivity {
                 if (!key.equals(UserDetails.username)) {
                     al.add(key);
                 }
-
                 totalUsers++;
             }
 
