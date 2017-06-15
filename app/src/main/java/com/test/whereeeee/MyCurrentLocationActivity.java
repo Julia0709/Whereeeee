@@ -1,5 +1,6 @@
 package com.test.whereeeee;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 
@@ -9,6 +10,8 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class MyCurrentLocationActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -57,4 +60,11 @@ public class MyCurrentLocationActivity extends FragmentActivity implements OnMap
         mMap.moveCamera(cUpdate);
 
     }
+
+    // change font
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
+    }
+
 }
