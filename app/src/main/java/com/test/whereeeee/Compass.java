@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 public class Compass implements SensorEventListener {
     private static final String TAG = "Compass";
@@ -24,8 +23,8 @@ public class Compass implements SensorEventListener {
 
     // compass arrow to rotate
     public ImageView arrowView = null;
-    public TextView textViewDistance = null;
-    public TextView textViewAzimuth = null;
+//    public TextView textViewDistance = null;
+//    public TextView textViewAzimuth = null;
 
     public Compass(Context context) {
         sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
@@ -55,7 +54,7 @@ public class Compass implements SensorEventListener {
         Animation an = new RotateAnimation(-currectAzimuth, -azimuth, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         currectAzimuth = azimuth;
 
-        an.setDuration(500);
+        an.setDuration(100);
         an.setRepeatCount(0);
         an.setFillAfter(true);
 
@@ -97,8 +96,6 @@ public class Compass implements SensorEventListener {
                 adjustArrow();
                 String strAzimuth = String.valueOf(MapsActivity.getDirection(UserDetails.latitude1, UserDetails.longitude1, UserDetails.latitude2, UserDetails.longitude2));
                 String strDistance = String.format("about %1$.0f m",MapsActivity.calculateDistance(UserDetails.latitude1,  UserDetails.longitude1, UserDetails.latitude2, UserDetails.longitude2,0,0));
-                textViewAzimuth.setText(strAzimuth);
-                textViewDistance.setText(strDistance);
             }
         }
     }

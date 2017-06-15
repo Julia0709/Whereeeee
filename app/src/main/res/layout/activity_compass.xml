@@ -38,14 +38,6 @@
             tools:ignore="MissingPrefix"
             tools:text="distance" />
 
-        <TextView
-            android:id="@+id/azimuth"
-            fontPath="@string/font_regular"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:ignore="MissingPrefix"
-            tools:text="azimuth" />
-
     </LinearLayout>
 
 </RelativeLayout>
