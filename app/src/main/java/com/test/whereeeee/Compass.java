@@ -23,24 +23,10 @@ public class Compass implements SensorEventListener {
 
     // compass arrow to rotate
     public ImageView arrowView = null;
-//    public TextView textViewDistance = null;
-//    public TextView textViewAzimuth = null;
-
     public Compass(Context context) {
         sensorManager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
         gsensor = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         msensor = sensorManager.getDefaultSensor(Sensor.TYPE_MAGNETIC_FIELD);
-    }
-
-    public void start() {
-        sensorManager.registerListener(this, gsensor,
-                SensorManager.SENSOR_DELAY_GAME);
-        sensorManager.registerListener(this, msensor,
-                SensorManager.SENSOR_DELAY_GAME);
-    }
-
-    public void stop() {
-        sensorManager.unregisterListener(this);
     }
 
     private void adjustArrow() {
@@ -50,14 +36,12 @@ public class Compass implements SensorEventListener {
         }
 
         Log.i(TAG, "will set rotation from " + currectAzimuth + " to " + azimuth);
-
         Animation an = new RotateAnimation(-currectAzimuth, -azimuth, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
         currectAzimuth = azimuth;
 
         an.setDuration(100);
         an.setRepeatCount(0);
         an.setFillAfter(true);
-
         arrowView.startAnimation(an);
     }
 
@@ -89,18 +73,23 @@ public class Compass implements SensorEventListener {
             if (success) {
                 float orientation[] = new float[3];
                 SensorManager.getOrientation(R, orientation);
-
                 azimuth = (float) Math.toDegrees(orientation[0]); // orientation
                 azimuth = (azimuth + 360) % 360;
-
                 adjustArrow();
-                String strAzimuth = String.valueOf(MapsActivity.getDirection(UserDetails.latitude1, UserDetails.longitude1, UserDetails.latitude2, UserDetails.longitude2));
-                String strDistance = String.format("about %1$.0f m",MapsActivity.calculateDistance(UserDetails.latitude1,  UserDetails.longitude1, UserDetails.latitude2, UserDetails.longitude2,0,0));
             }
         }
     }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
+    }
+
+    public void start() {
+        sensorManager.registerListener(this, gsensor, SensorManager.SENSOR_DELAY_GAME);
+        sensorManager.registerListener(this, msensor, SensorManager.SENSOR_DELAY_GAME);
+    }
+
+    public void stop() {
+        sensorManager.unregisterListener(this);
     }
 }
