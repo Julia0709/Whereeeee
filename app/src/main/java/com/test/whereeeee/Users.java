@@ -10,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -75,9 +74,10 @@ public class Users extends AppCompatActivity {
     }
 
     // store current location on firebase
-    public void getUserLocation() {
+    public String getUserLocation() {
         String userName = FirebaseDatabase.getInstance().getReference().child("users").child(UserDetails.chatWith).getKey();
-        Toast.makeText(this,userName,Toast.LENGTH_LONG).show();
+        //Toast.makeText(this,userName,Toast.LENGTH_LONG).show();
+        return userName;
     }
 
     public void doOnSuccess(String s) {
