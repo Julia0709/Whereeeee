@@ -10,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -34,6 +33,8 @@ public class Users extends AppCompatActivity {
     ArrayList<String> al = new ArrayList<>();
     int totalUsers = 0;
     ProgressDialog pd;
+
+    TextView mFriendName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,15 +70,18 @@ public class Users extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 UserDetails.chatWith = al.get(position);
                 startActivity(new Intent(Users.this, MapsActivity.class));
+
                 getUserLocation();
             }
         });
     }
 
+
     // store current location on firebase
-    public void getUserLocation() {
+    public String getUserLocation() {
         String userName = FirebaseDatabase.getInstance().getReference().child("users").child(UserDetails.chatWith).getKey();
-        Toast.makeText(this,userName,Toast.LENGTH_LONG).show();
+        //Toast.makeText(this,userName,Toast.LENGTH_LONG).show();
+        return userName;
     }
 
     public void doOnSuccess(String s) {
