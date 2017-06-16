@@ -71,11 +71,15 @@ public class MapsActivity extends AppCompatActivity implements GoogleApiClient.C
         // ###################################################################################
 
         TextView textViewDistance = (TextView) findViewById(R.id.distance);
+        TextView textViewPartner = (TextView) findViewById(R.id.partner);
 
         if (mLastLocation != null) {
             double distance = calculateDistance(mLastLocation.getLatitude(), mLastLocation.getLongitude(), UserDetails.latitude2, UserDetails.longitude2, mLastLocation.getAltitude(), 0);
             strDistance = String.format("%1$.0f ", distance);
+            Users user = new Users();
+            String setUsername = user.getUserLocation();
             textViewDistance.setText(strDistance);
+            textViewPartner.setText(setUsername);
         } else {
             Log.d("tag", "Not connected");
         }

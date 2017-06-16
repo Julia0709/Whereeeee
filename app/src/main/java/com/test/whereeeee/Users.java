@@ -10,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -72,22 +71,17 @@ public class Users extends AppCompatActivity {
                 UserDetails.chatWith = al.get(position);
                 startActivity(new Intent(Users.this, MapsActivity.class));
 
-                getFriendName();
-
+                getUserLocation();
             }
         });
-
     }
 
-    // get friend's name
-    public void getFriendName() {
 
+    // store current location on firebase
+    public String getUserLocation() {
         String userName = FirebaseDatabase.getInstance().getReference().child("users").child(UserDetails.chatWith).getKey();
-
-//        mFriendName = (TextView) Users.this.findViewById(R.id.friendName);
-//        mFriendName.setText(UserDetails.chatWith);
-        Toast.makeText(this,userName,Toast.LENGTH_LONG).show();
-
+        //Toast.makeText(this,userName,Toast.LENGTH_LONG).show();
+        return userName;
     }
 
     public void doOnSuccess(String s) {
