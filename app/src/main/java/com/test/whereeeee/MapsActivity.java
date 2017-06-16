@@ -74,7 +74,7 @@ public class MapsActivity extends AppCompatActivity implements GoogleApiClient.C
 
         if (mLastLocation != null) {
             double distance = calculateDistance(mLastLocation.getLatitude(), mLastLocation.getLongitude(), UserDetails.latitude2, UserDetails.longitude2, mLastLocation.getAltitude(), 0);
-            strDistance = String.format("%1$.0f m", distance);
+            strDistance = String.format("%1$.0f ", distance);
             textViewDistance.setText(strDistance);
         } else {
             Log.d("tag", "Not connected");
